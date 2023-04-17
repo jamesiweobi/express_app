@@ -2,22 +2,26 @@ const users = [
   {
     name: 'John',
     sex: 'male',
-    age: 46
+    age: 46,
+    password: "password1"
   },
   {
     name: 'Anne',
     sex: 'female',
-    age: 78
+    age: 78,
+    password: "password1"
   },
   {
     name: 'Prosper',
     sex: 'male',
-    age: 40
+    age: 42,
+    password: "password1"
   },
   {
     name: 'Ada',
     sex: 'female',
-    age: 19
+    age: 19,
+    password: "password1"
   }
 ]
 
@@ -26,6 +30,7 @@ module.exports = {
 
   createUserController: (req, res) => {
     const userObject = req.body
+    console.log(req.body)
     users.push(userObject)
     res.status(201).json({
       status: 'success',
@@ -34,17 +39,14 @@ module.exports = {
     })
   },
 
-  getSingleUserController: (req, res) => {
+  getSingleUserController: (req, res,) => {
     const name = req.params.name
     if (!name) return res.status(404).json({
       status: 'failed',
       message: 'Please pass in a user name',
     })
     const user = users.find(user => user.name.toLowerCase() == name.toLowerCase())
-    if (!user) return res.status(404).json({
-      status: 'failed',
-      message: 'User not found',
-    })
+    if (!user) throw new Error("User not found")
     return res.status(200).json({
       status: 'success',
       message: 'User found',

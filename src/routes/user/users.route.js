@@ -1,5 +1,7 @@
 const express = require('express')
 const { createUserController, getSingleUserController, getUsersController, deleteOneUserController, searchController } = require('../../controllers/user.controller')
+
+
 const router = express.Router()
 
 // "users/create"
@@ -16,9 +18,4 @@ router.get('/:name', getSingleUserController)
 //"users/:id"
 router.delete('/:id', deleteOneUserController)
 
-
-
-
-
-
-module.exports = { userRouter: router }
+module.exports = { userRouter: router };
