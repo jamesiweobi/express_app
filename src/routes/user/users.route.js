@@ -1,5 +1,5 @@
 const express = require('express')
-const { createUserController, getSingleUserController, getUsersController, deleteOneUserController, searchController } = require('../../controllers/user.controller')
+const { createUserController, getSingleUserController, getUsersController, deleteOneUserController, searchController, updateSingleUser } = require('../../controllers/user.controller')
 
 
 const router = express.Router()
@@ -8,6 +8,9 @@ const router = express.Router()
 router.post('/create', createUserController)
 
 router.get('/search', searchController)
+
+//Update a User by the user index
+router.put('/update/:id', updateSingleUser)
 
 // "users/list"
 router.get('/list', getUsersController)

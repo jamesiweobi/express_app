@@ -35,7 +35,7 @@ module.exports = {
     res.status(201).json({
       status: 'success',
       message: 'User Created',
-      users
+      data: { users }
     })
   },
 
@@ -50,7 +50,7 @@ module.exports = {
     return res.status(200).json({
       status: 'success',
       message: 'User found',
-      user
+      data: { user}
     })
   },
 
@@ -58,7 +58,7 @@ module.exports = {
     res.status(200).json({
       status: 'success',
       message: users.length < 1 ? "Users not found" : "Users found",
-      users
+      data:{users}
     })
   },
 
@@ -76,6 +76,19 @@ module.exports = {
       message: "Search result found",
       data: {
         search, limit, page
+      }
+    })
+  },
+
+  updateSingleUser: function(req, res) {
+    const id = Number(req.params.id);
+    if(id > users.length - 1) throw new Error('User does not exist');
+    users[id] = req.body
+    res.status(200).json({
+      status: 'success',
+      message: "User updated successfully",
+      data: {
+      users
       }
     })
   }

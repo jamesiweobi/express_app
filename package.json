@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-dev": "set NODE_ENV=development && nodemon app.js"
+    "start-dev": "set NODE_ENV=development && nodemon app.js",
+    "start-staging":"set NODE_ENV=staging && nodemon app.js"
   },
   "keywords": [],
   "author": "",
